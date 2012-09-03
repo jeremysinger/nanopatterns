@@ -1,0 +1,11 @@
+
+
+Sort out build harness - use ant?
+Sort out some simple unit tests? - as suggested
+Sort out open source licence.
+
+Add extra tests
+Get this material out to mailing list!
+
+Start writing a proposal.
+
