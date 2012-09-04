@@ -2,6 +2,8 @@
 // Jeremy Singer
 // 18 Nov 08
 
+package uk.ac.glasgow.jsinger.nanopatterns;
+
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.MethodAdapter;
 import org.objectweb.asm.Opcodes;

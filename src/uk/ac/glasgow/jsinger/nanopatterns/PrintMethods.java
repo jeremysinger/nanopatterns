@@ -2,6 +2,8 @@
 // Jeremy Singer
 // 21 Apr 09
 
+package uk.ac.glasgow.jsinger.nanopatterns;
+
 // lets the MethodPrinter visitor
 // visit all elements in a class.
 // This is simply a wrapper class.

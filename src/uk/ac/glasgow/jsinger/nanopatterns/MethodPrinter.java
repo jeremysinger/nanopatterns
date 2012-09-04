@@ -2,6 +2,8 @@
 // Jeremy Singer
 // 10 Nov 08
 
+package uk.ac.glasgow.jsinger.nanopatterns;
+
 import org.objectweb.asm.*;
 
 // use the PrintMethods wrapper class to get this visitor

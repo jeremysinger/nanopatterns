@@ -2,6 +2,8 @@
 // Jeremy Singer
 // 10 Nov 08
 
+package uk.ac.glasgow.jsinger.nanopatterns;
+
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassAdapter;
 import org.objectweb.asm.tree.ClassNode;
