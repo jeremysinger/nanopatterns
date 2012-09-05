@@ -1,4 +1,4 @@
-<project name="nanopatterns" default="compile" basedir=".">
+<project name="nanopatterns" default="dist" basedir=".">
     <description>
         Ant build file for nanopatterns project
     </description>
@@ -23,11 +23,20 @@
 
   <target name="dist" depends="compile"
         description="generate the distribution" >
-    <!-- Create the distribution directory -->
-    <mkdir dir="${dist}/lib"/>
+    <!-- Extract asm class files -->
+    <unzip dest="${build}">
+    <fileset dir="${lib}">
+        <include name="*.jar"/>
+    </fileset>
+    </unzip>
 
     <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-    <jar jarfile="${dist}/lib/MyProject-${DSTAMP}.jar" basedir="${build}"/>
+    <jar jarfile="${dist}/np-${DSTAMP}.jar" basedir="${build}">
+    <manifest>
+      <attribute name="Main-Class"
+            value="uk.ac.glasgow.jsinger.nanopatterns.TestPatternSpotter"/>
+    </manifest>
+    </jar>
   </target>
 
   <target name="clean"
