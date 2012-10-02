@@ -38,11 +38,16 @@ public class ControlFlowPatternSpotter extends MethodAdapter{
     // private ArrayList<String> alreadySeenLabels;
     private ArrayList alreadySeenLabels;
 
+    // number of switch instructions (table and lookup) 
+    // in this method
+    private int numSwitchInstructions;
+
     public ControlFlowPatternSpotter(MethodVisitor mv) {
 	super(mv);
 	this.numJumpInsns = 0;
 	this.backwardsJump = false;
 	this.alreadySeenLabels = new ArrayList();
+	this.numSwitchInstructions = 0;
 	
     }
     
@@ -71,15 +76,35 @@ public class ControlFlowPatternSpotter extends MethodAdapter{
 	}
     }
 
+    // @Override
+    public void visitTableSwitchInsn(int min,
+				     int max,
+				     Label dflt,
+				     Label... labels) {
+	this.numSwitchInstructions++;
+    }
+
+    // @Override
+    public void visitLookupSwitchInsn(Label dflt,
+				      int[] keys,
+				      Label[] labels) {
+	this.numSwitchInstructions++;
+    }
+	
     
     // accessor methods for computed meta-data about method
 
     public boolean isStraightLineCode() {
-	return this.numJumpInsns==0;
+	return (this.numJumpInsns==0 &&
+		this.numSwitchInstructions==0);
     }
 
     public boolean isLoopingCode() {
 	return this.backwardsJump;
+    }
+
+    public boolean isSwitcher() {
+	return (this.numSwitchInstructions>0);
     }
 
 }

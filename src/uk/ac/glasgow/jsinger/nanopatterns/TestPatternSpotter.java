@@ -38,7 +38,7 @@ public class TestPatternSpotter {
 	    ClassNode cn = new ClassNode();
 	    cr.accept(cn, ClassReader.SKIP_DEBUG);
 
-	    System.out.println("class method typesig numInstrs noparams void recursive samename leaf objCreator thisInstanceFieldReader thisInstanceFieldWriter otherInstanceFieldReader otherInstanceFieldWriter staticFieldReader staticFieldWriter typeManipulator straightLine looping exceptions localReader localWriter arrCreator arrReader arrWriter polymorphic singleReturner multipleReturner client jdkClient tailCaller");
+	    System.out.println("class method typesig numInstrs noparams void recursive samename leaf objCreator thisInstanceFieldReader thisInstanceFieldWriter otherInstanceFieldReader otherInstanceFieldWriter staticFieldReader staticFieldWriter typeManipulator straightLine looper switcher exceptions localReader localWriter arrCreator arrReader arrWriter polymorphic singleReturner multipleReturner client jdkClient tailCaller");
 	    
 	    List methods = cn.methods;
 	    for (int i = 0; i < methods.size(); ++i) {
@@ -111,6 +111,7 @@ public class TestPatternSpotter {
 		    printBooleanValue(tps.isTypeManipulator());
 		    printBooleanValue(cps.isStraightLineCode());
 		    printBooleanValue(cps.isLoopingCode());
+		    printBooleanValue(cps.isSwitcher());
 		    printBooleanValue(throwsExceptions);
 		    printBooleanValue(aps.isLocalVarReader());
 		    printBooleanValue(aps.isLocalVarWriter());
