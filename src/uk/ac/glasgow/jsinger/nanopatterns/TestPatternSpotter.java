@@ -38,7 +38,7 @@ public class TestPatternSpotter {
 	    ClassNode cn = new ClassNode();
 	    cr.accept(cn, ClassReader.SKIP_DEBUG);
 
-	    System.out.println("class method typesig numInstrs noparams void recursive samename leaf objCreator thisInstanceFieldReader thisInstanceFieldWriter otherInstanceFieldReader otherInstanceFieldWriter staticFieldReader staticFieldWriter typeManipulator straightLine looping exceptions localReader localWriter arrCreator arrReader arrWriter polymorphic singleReturner multipleReturner");
+	    System.out.println("class method typesig numInstrs noparams void recursive samename leaf objCreator thisInstanceFieldReader thisInstanceFieldWriter otherInstanceFieldReader otherInstanceFieldWriter staticFieldReader staticFieldWriter typeManipulator straightLine looping exceptions localReader localWriter arrCreator arrReader arrWriter polymorphic singleReturner multipleReturner client jdkClient tailCaller");
 	    
 	    List methods = cn.methods;
 	    for (int i = 0; i < methods.size(); ++i) {
@@ -60,6 +60,8 @@ public class TestPatternSpotter {
 		    new PolymorphicPatternSpotter(new EmptyVisitor());
 		ReturnPatternSpotter retps =
 		    new ReturnPatternSpotter(new EmptyVisitor());
+		MethodPatternSpotter mps = 
+		    new MethodPatternSpotter(new EmptyVisitor());
 		// check following
 		// properties directly from
 		// method descriptor
@@ -83,7 +85,8 @@ public class TestPatternSpotter {
 			((AbstractInsnNode) insn).accept(tps);
 			((AbstractInsnNode) insn).accept(cps);
 			((AbstractInsnNode) insn).accept(aps);
-			((AbstractInsnNode) insn).accept(retps);
+			((AbstractInsnNode) insn).accept(mps);
+			
 			
 		    }
 		    int numInstrs = method.instructions.size();
@@ -117,6 +120,9 @@ public class TestPatternSpotter {
 		    printBooleanValue(pps.isPolymorphic());
 		    printBooleanValue(retps.isSingleReturner());
 		    printBooleanValue(retps.isMultipleReturner());
+		    printBooleanValue(mps.isClient());
+		    printBooleanValue(mps.isJdkClient());
+		    printBooleanValue(mps.isTailCaller());
 		    System.out.println("");
 		}
 	    }
