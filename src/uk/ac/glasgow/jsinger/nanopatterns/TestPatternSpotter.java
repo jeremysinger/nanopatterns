@@ -27,7 +27,7 @@ public class TestPatternSpotter {
 
 	    if (args[0].equals("-help")) {
 	      System.out.println(
-		"This program (either TestPatternSpotter class or \nnp.jar Java archive) detects fundamental nano-patterns in bytecode \nclass files. See the paper at \n  http://www.cs.man.ac.uk/~jsinger/pdfs/nanopatterns.pdf \nfor more details about nano-patterns."
+		"This program (either TestPatternSpotter class or \nnp.jar Java archive) detects fundamental nano-patterns in bytecode \nclass files. See the paper at \n  http://www.dcs.gla.ac.uk/~jsinger/pdfs/nanopatterns.pdf \nfor more details about nano-patterns."
 		);
 	      System.exit(0);
 	    }
