@@ -85,9 +85,8 @@ public class TestPatternSpotter {
 			((AbstractInsnNode) insn).accept(tps);
 			((AbstractInsnNode) insn).accept(cps);
 			((AbstractInsnNode) insn).accept(aps);
+			((AbstractInsnNode) insn).accept(retps);
 			((AbstractInsnNode) insn).accept(mps);
-			
-			
 		    }
 		    int numInstrs = method.instructions.size();
 		    System.out.print("" +
